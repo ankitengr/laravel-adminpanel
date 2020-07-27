@@ -1,3 +1,29 @@
+## Working Steps
+
+Download Code and keep on your htdocs
+
+Go To laravel-adminpanel directory
+
+create db laravel
+
+cp .env.example .env
+
+composer install
+
+php artisan migrate
+
+php artisan db:seed
+
+Following Cache clear are optional but may be required if application not run properly.
+  php artisan config:clear
+  php artisan config:cache
+  php artisan cache:clear
+
+php artisan serve
+
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
