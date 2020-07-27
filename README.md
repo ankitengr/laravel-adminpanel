@@ -21,7 +21,7 @@ Following Cache clear are optional but may be required if application not run pr
 
 php artisan serve
 
-
+Default User/Password : superadministrator@example.org / password
 
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
