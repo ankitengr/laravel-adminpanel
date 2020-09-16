@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FileZilla3 version="3.44.2" platform="windows">
+	<Servers>
+		<Server>
+			<Host>10.5.0.116</Host>
+			<Port>22</Port>
+			<Protocol>1</Protocol>
+			<Type>0</Type>
+			<User>content</User>
+			<Pass encoding="base64">aiRwMGYxY0BjMGZjIzE2</Pass>
+			<Logontype>1</Logontype>
+			<TimezoneOffset>0</TimezoneOffset>
+			<PasvMode>MODE_DEFAULT</PasvMode>
+			<MaximumMultipleConnections>0</MaximumMultipleConnections>
+			<EncodingType>Auto</EncodingType>
+			<BypassProxy>0</BypassProxy>
+			<Name>feeds.intoday.in</Name>
+			<Comments>itgd - y0urh1ll@345,
+content - j$p0f1c@c0fc#16</Comments>
+			<Colour>0</Colour>
+			<LocalDir>D:\Data\tasks\Feeds</LocalDir>
+			<RemoteDir>1 0 3 opt 5 httpd 6 vhosts 10 intoday.in 10 subdomains 3 mob</RemoteDir>
+			<SyncBrowsing>0</SyncBrowsing>
+			<DirectoryComparison>0</DirectoryComparison>
+		</Server>
+	</Servers>
+</FileZilla3>
