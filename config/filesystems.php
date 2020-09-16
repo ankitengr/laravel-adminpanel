@@ -64,7 +64,17 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-
+		
+		'public_uploads' => [
+            'driver' => 'local',
+            //'key' => env('AWS_ACCESS_KEY_ID'),
+            //'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            //'region' => env('AWS_DEFAULT_REGION'),
+            //'bucket' => env('AWS_BUCKET'),
+			'root'   => public_path() . '/uploads',
+			//'url' => env('APP_URL').'/files',
+            //'visibility' => 'public',
+        ],
     ],
 
     /*

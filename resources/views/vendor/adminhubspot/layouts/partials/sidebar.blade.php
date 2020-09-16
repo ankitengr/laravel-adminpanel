@@ -57,14 +57,97 @@
 		  </li>
 		  @endpermission
 		  
-		  @permission('settings-read')
-		  <li class="nav-item">
-			<a href="{{ route('settings.index') }}" class="nav-link">
-				<i class="fa fa-cog"></i>  
-				<p>Settings</p>
-				</a>
+		  <li class="nav-item has-treeview menu-close">
+			<a href="#" class="nav-link"> 
+				<i class="fa fa-user"></i>
+				<p>App Management<i class="right fas fa-angle-left"></i></p>
+			</a>
+			<ul class="nav nav-treeview">
+				<li class="nav-item">
+					<a href="{{ route('apps.index') }}" class="nav-link"><p>Apps</p></a>
+				</li>
+
+				<li class="nav-item">
+					<a href="{{ route('posttypes.index') }}" class="nav-link"><p>Post Types</p></a>
+				</li>
+				
+				<li class="nav-item">
+					<a href="{{ route('categories.index') }}" class="nav-link"><p>Categories</p></a>
+				</li>
+				
+				<li class="nav-item">
+					<a href="{{ route('templates.index') }}" class="nav-link"><p>Templates</p></a>
+				</li>
+				
+				<li class="nav-item">
+					<a href="{{ route('widgets.index') }}" class="nav-link"><p>Widgets</p></a>
+				</li>
+				
+				@permission('settings-read')
+				  <li class="nav-item">
+					<a href="{{ route('settings.index') }}" class="nav-link">
+						<i class="fa fa-cog"></i>  
+						<p>Settings</p>
+						</a>
+				  </li>
+				@endpermission
+				
+			</ul>
 		  </li>
-		  @endpermission
+		  
+		  <li class="nav-item has-treeview menu-close">
+			<a href="#" class="nav-link"> 
+				<i class="fa fa-user"></i>
+				<p>Attribute Management<i class="right fas fa-angle-left"></i></p>
+			</a>
+			<ul class="nav nav-treeview">
+				<li class="nav-item">
+					<a href="{{ route('attributesgroup.index') }}" class="nav-link"><p>Groups</p></a>
+				</li>
+				<li class="nav-item">
+					<a href="{{ route('attributes.index') }}" class="nav-link"><p>Attributes</p></a>
+				</li>
+			</ul>
+		  </li>
+		  
+		  
+		  <li class="nav-item">
+			<a href="{{ route('authors.index') }}" class="nav-link">
+				<i class="fa fa-user"></i>  
+				<p>Authors</p>
+			</a>
+		  </li>
+		  
+		  <?php 
+		  $post_type = DB::table('post_types')
+			        ->select('title','slug')
+			        ->where('published','=','1')
+			        ->orderBy('id')
+			        ->get();
+		  
+		?>
+		 @if(!empty($post_type))
+			@foreach($post_type as $k => $v)
+			<li class="nav-item">
+				<a href="{{ route(@$v->slug . '.index') }}" class="nav-link">
+					<i class="fa fa-user"></i>  
+					<p>{{$v->title}}</p>
+				</a>
+			</li>
+			@endforeach
+		 @endif
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
 		  
 		  @if(!empty($roleDetails))
 			@foreach($roleDetails as $pModId => $modRow)

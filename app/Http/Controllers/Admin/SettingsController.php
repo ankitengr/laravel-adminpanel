@@ -47,13 +47,25 @@ class SettingsController extends Controller
 		->make(true);
         }
       
-        $header_name = 'Settings';
+	
+		$fields = [
+				['label_text' => 'ID', 'column_name' => 'id'],
+				['label_text' => 'Key', 'column_name' => 'option_name'],
+				['label_text' => 'Value', 'column_name' => 'option_value'],
+				['label_text' => 'Allow Edit', 'column_name' => 'allow_edit'],
+				['label_text' => 'Published', 'column_name' => 'status'],
+			];
+		
+		$params = [
+            'title' => 'Settings',
+            'fields' => $fields,
+			'controller' => 'settings',
+			'id' => 0
+        ];
+      
         $theme = $this->theme;
-		$columns_display_name = ['ID','Key','Value','Allow Edit','Status'];
-		$columns_name = ['id','option_name', 'option_value', 'allow_edit','status'];
-		$data['result']=[];
-		$ajax_route = 'settings.index';
-        return view($theme . '.common.datatable',compact('theme','header_name','columns_display_name','columns_name', 'data', 'ajax_route'));
+		return view($theme . '.common.datatable', compact('theme', 'params'));
+		
     }
 
     /**

@@ -3,23 +3,25 @@
 @section('breadcamp')
   <div class="row mb-2">
     <div class="col-sm-6">
-	  <h1>{{!empty($header_name) ? $header_name : 'Undefined Title'}}</h1>
+	  <h1>{{!empty($params['title']) ? $params['title'] : 'Title'}}</h1>
     </div>
     <div class="col-sm-6">
 	  <ol class="breadcrumb float-sm-right">
 	    <li class="breadcrumb-item"><a href="#">Home</a></li>
-	    <li class="breadcrumb-item active">{{!empty($header_name) ? $header_name : ''}}</li>
+	    <li class="breadcrumb-item active">{{!empty($params['title']) ? $params['title'] : 'Title'}}</li>
 	  </ol>
     </div>
   </div>
   
+	@if($params['controller']!='settings')
 	<div class="row">
 	  <div class="col-sm-12">
 	    <div class="float-sm-right">
-	      <a href="" class="btn btn-warning">Add New</a>
+	      <a href="{{ route($params['controller'].'.create') }}" class="btn btn-warning">Create</a>
 	    </div>
 	  </div>
 	</div>
+	@endif
 @endsection
 
 
@@ -36,8 +38,8 @@
       <table id="table" class="table table-striped">
         <thead>
           <tr>
-          @foreach($columns_display_name as $coln)
-			<th>{{$coln}}</th>
+          @foreach($params['fields'] as $field)
+			<th>{{$field['label_text']}}</th>
 		  @endforeach
           </tr>
         </thead>
@@ -64,10 +66,10 @@
                $('#table').DataTable({
 				processing: true,
 				serverSide: true,
-				ajax: '{{ route($ajax_route) }}',
+				ajax: '{{ route($params['controller'].".index") }}',
 				columns: [
-					@foreach($columns_name as $coln)
-						{ data: '{{$coln}}', name: '{{$coln}}' },
+					@foreach($params['fields'] as $field)
+						{ data: '{{$field['column_name']}}', name: '{{$field['column_name']}}' },
 					@endforeach	
                      ]
 			  });

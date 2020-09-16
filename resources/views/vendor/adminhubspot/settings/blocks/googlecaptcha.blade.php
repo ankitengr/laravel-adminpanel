@@ -1,5 +1,5 @@
 {!! Form::open(['method'=>'POST','url'=>route('settings.store',['option_key'=>$option_key]),'files'=>true,'class'=>'form']) !!}
-	@include($theme . '.partials.submitbutton') 
+	@include($theme . '.common.includes.submitbutton') 
 	{!! Form::select("version",['1'=>"Version 1","2"=>"Version 2","3"=>"Version 3"],(isset($result['version']))?$result['version']:"",['class'=>'form-control widget_type' , 'id'=>'version', 'required'=>'']) !!}
 	
 	{!! Form::text('site_key', !empty($result['site_key']) ? $result['site_key'] : '', [
@@ -20,7 +20,7 @@
 	@if(!empty($option_id))
 		{!! Form::hidden('id',$option_id) !!}
 	@endif
-@include($theme . '.partials.submitbutton')
+@include($theme . '.common.includes.submitbutton')
 {!! Form::close() !!}
 
 <script type="text/javascript">

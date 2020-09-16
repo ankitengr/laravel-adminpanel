@@ -1,4 +1,15 @@
-## Working Steps
+## Notes
+Try Only on fresh installation... 
+
+LaraTrust ACL Management Included
+
+Default users table cab be delete.. So take backup of your db first.
+
+## Coming Soon
+EAV Attribute Support
+
+
+## Usage Steps
 
 Download Code and keep on your htdocs
 
@@ -22,6 +33,8 @@ Following Cache clear are optional but may be required if application not run pr
 php artisan serve
 
 Default User/Password : superadministrator@example.org / password
+
+
 
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>

@@ -33,11 +33,52 @@ Route::group([
 			return view('welcome');
 		});*/
 		
+		
+		
 		/******** ACL and User Management *****/
 		
 		Route::resource('users', 'UsersController');
 		Route::resource('roles', 'RolesController');
 		Route::resource('permission', 'PermissionController');
+		
+		Route::resource('posttypes', 'PostTypesController');
+		Route::resource('categories', 'CategoriesController');
+		Route::resource('templates', 'TemplatesController');
+		Route::resource('widgets', 'WidgetsController');
+		
+		Route::resource('multimedia', 'MultimediaController');
+		
+		Route::resource('ajax', 'AjaxController');
+		Route::post('ajax/get_medias', 'AjaxController@get_medias');
+		Route::post('ajax/get_media_data/{id}', 'AjaxController@get_media_data');
+		Route::post('ajax/media_upload', 'AjaxController@media_upload');
+				
+		
+		Route::resource('settings','SettingsController');
+		Route::get('settings/create/{option_key}', ['middleware' => ['ability:superadministrator|administrator,create-settings'], 'uses' => 'SettingsController@create'])->name('settings.create');
+		
+		Route::resource('apps', 'AppsController');
+		Route::resource('attributesgroup', 'AttributesGroupController');
+		Route::resource('attributes', 'AttributesController');
+		Route::resource('attributesmapping', 'AttributesMappingController');
+		Route::resource('authors', 'AuthorsController');
+		//Route::resource('attribute_multi_data_values', 'AttributeMultiDataValuesController');
+		
+		
+		/****Posts Multiple route by type ****/
+		$post_type = DB::table('post_types')
+			        ->select('title','slug')
+			        ->where('published','=','1')
+			        ->orderBy('id')
+			        ->get();
+		
+	
+		foreach ($post_type as $key =>$value) {
+			Route::resource('posts/'.$value->slug, 'PostsController');	
+		}
+		
+		
+		
 		/*
 		Route::get('user/create', ['middleware' => ['ability:superadministrator|administrator,create-users'], 'uses' => 'UsersController@create'])->name('users.create');
 		Route::get('user/edit/{id}', ['middleware' => ['ability:superadministrator|administrator,read-users'], 'uses' => 'UsersController@edit'])->name('users.edit');
@@ -83,8 +124,7 @@ Route::group([
 		//Route::get('general/listing/table:{table}','GeneralController@listing')->name('general_listing');
 		
 		
-		Route::resource('settings','SettingsController');
-		Route::get('settings/create/{option_key}', ['middleware' => ['ability:superadministrator|administrator,create-settings'], 'uses' => 'SettingsController@create'])->name('settings.create');
+		
 		
 		
 		/*
@@ -103,6 +143,16 @@ Route::group([
 		*/
 		
 	});
+
+/*
+Route::group(['middleware' => ['web']], function () {
+	Route::get('storage/{filename}', function ($filename) {
+			//$userid = session()->get('user')->id;
+			return Storage::get('uploads/' . $filename);
+	});
+});
+*/
+
 
 Auth::routes();
 Route::get('/login', 'LoginController@index')->name('login');

@@ -72,7 +72,7 @@ $(".add_form, .apply_form").on('click', function(){
 </div>
 
 {!! Form::open(['method'=>'POST','id' =>'settings_save', 'url'=>route('settings.store',['option_key'=>$option_key]),'files'=>true]) !!} 
-	@include($theme . '.partials.submitbutton')
+	@include($theme . '.common.includes.submitbutton')
 	
 	{!! Form::hidden('option_key',$option_key) !!}
 
@@ -85,5 +85,5 @@ $(".add_form, .apply_form").on('click', function(){
 		<textarea style="width: 100%; min-height: 300px;" name="top_menu" id="menu_data" class="jsonOutput">{{$jsonInputData}}</textarea>
 	</div>
 	{!! Form::hidden('option_key','top_menu') !!}
-@include($theme . '.partials.submitbutton')
+@include($theme . '.common.includes.submitbutton')
 {!! Form::close() !!}

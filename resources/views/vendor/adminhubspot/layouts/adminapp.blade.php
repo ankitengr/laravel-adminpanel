@@ -30,6 +30,9 @@
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	
+	<!--<link rel="stylesheet" href="{{ asset('/plugins/fselect/fselect.css') }}">-->
+	<link rel="stylesheet" href="{{ asset('/plugins/select2/css/select2.min.css') }}">
+	
 	@yield('stylesheets')
 	
 	<!-- jQuery -->
@@ -51,6 +54,9 @@
 	
 	<!-- AdminLTE App -->
 	<script src="{{ asset('/dist/js/adminlte.js') }}"></script>
+	
+	<!--<script src="{{ asset('/plugins/fselect/fselect.js') }}"></script>-->
+	<script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
 	
 	
 		{{--
@@ -93,5 +99,6 @@
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			}
 		});
+	</script>
 </body>
 </html>
